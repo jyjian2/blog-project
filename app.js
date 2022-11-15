@@ -28,12 +28,13 @@ app.get("/posts/:postName", function(req, res) {
   let postTile = _.lowerCase(req.params.postName);
   let found = posts.find(element => {
     if(_.lowerCase(element.title) === postTile) {
+      console.log("Found");
       res.render("post", {
         postTitle: postTile,
         postContent: element.content
       })
     } else {
-      console.log("Not Found");
+      console.log("Not found");
     }
   })
 })
