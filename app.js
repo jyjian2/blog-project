@@ -25,11 +25,13 @@ app.get("/", function(req, res) {
 })
 
 app.get("/posts/:postName", function(req, res) {
-  let targetName = _.lowerCase(req.params.postName);
-  console.log(targetName);
+  let postTile = _.lowerCase(req.params.postName);
   let found = posts.find(element => {
-    if(_.lowerCase(element.title) === targetName) {
-      console.log("Match Found");
+    if(_.lowerCase(element.title) === postTile) {
+      res.render("post", {
+        postTitle: postTile,
+        postContent: element.content
+      })
     } else {
       console.log("Not Found");
     }
