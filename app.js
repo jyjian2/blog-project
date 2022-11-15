@@ -22,6 +22,16 @@ app.get("/", function(req, res) {
                       posts: posts})
 })
 
+app.get("/posts/:postName", function(req, res) {
+  let targetName = req.params.postName;
+  let found = posts.find(element => {
+    if(element.title === targetName) {
+      console.log("Match Found");
+    } else {
+      console.log("Not Found");
+    }
+  })
+})
 app.get("/about", function(req, res) {
   res.render("about", {aboutContent: aboutContent})
 })
